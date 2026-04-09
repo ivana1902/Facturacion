@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturación</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <main class="page">
+        <section class="panel panel-form">
+            <div class="panel-header">
+                <div>
+                    <span class="badge">Factura Profesional</span>
+                    <h1>Generador de Facturas</h1>
+                    <p>Complete los datos del cliente y los productos para generar una factura lista para impresión.</p>
+                </div>
+                <div class="meta-card">
+                    <p><strong>Número de factura</strong></p>
+                    <p id="invoice-number"></p>
+                </div>
+            </div>
+
+            <form id="invoice-form" class="invoice-form" novalidate>
+                <div class="section-heading">Datos del cliente</div>
+                <div class="grid-2">
+                    <label class="field">
+                        <span>Nombre</span>
+                        <input type="text" id="client-name" required placeholder="Nombre del cliente">
+                    </label>
+                    <label class="field">
+                        <span>RUC / CI</span>
+                        <input type="text" id="client-id" required placeholder="RUC o cédula">
+                    </label>
+                </div>
+                <div class="grid-2">
+                    <label class="field full-width">
+                        <span>Fecha</span>
+                        <input type="date" id="invoice-date" required>
+                    </label>
+                </div>
+
+                <div class="section-heading">Productos</div>
+                <div class="table-wrapper" id="factura">
+                    <table class="invoice-table">
+                        <thead>
+                            <tr>
+                                <th>Descripción</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>
+                                <th>Subtotal</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-body">
+                            <tr class="product-row">
+                                <td><input type="text" class="product-description" required placeholder="Ej. Servicio de diseño"></td>
+                                <td><input type="number" class="product-quantity" min="1" value="1" required></td>
+                                <td><input type="number" class="product-price" min="0" step="0.01" value="0.00" required></td>
+                                <td><span class="product-subtotal">0.00</span></td>
+                                <td><button type="button" class="btn btn-danger btn-remove">Eliminar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="actions-row">
+                    <button type="button" id="add-product" class="btn btn-secondary">Agregar producto</button>
+                </div>
+
+                <div class="totals-card">
+                    <div>
+                        <p>Subtotal general</p>
+                        <p class="amount" id="subtotal-total">$0.00</p>
+                    </div>
+                    <div>
+                        <p>IVA (10%)</p>
+                        <p class="amount" id="tax-total">$0.00</p>
+                    </div>
+                    <div class="total-line">
+                        <p>Total final</p>
+                        <p class="amount total" id="grand-total">$0.00</p>
+                    </div>
+                </div>
+
+                <div class="button-row">
+                    <button type="button" class="btn btn-primary" id="print-invoice">Imprimir factura</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script src="js/app.js"></script>
+</body>
+</html>
